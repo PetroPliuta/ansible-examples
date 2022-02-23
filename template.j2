@@ -1,0 +1,11 @@
+Hostname: {{ ansible_hostname }}<br>
+IP_addr: {{ansible_default_ipv4.address}} <br>
+CPU_CORES: {{ansible_processor_vcpus}} <br>
+RAM: {{ansible_memtotal_mb}} Mb <br>
+CPU Usage in %: {{ cpu_usage }}  <br>
+CPU Usage in GB:  <br>
+RAM Usage in %: {{ ansible_memory_mb.real.used *100/ ansible_memtotal_mb | round() }}  <br>
+RAM Usage in GB: {{ ansible_memory_mb.real.used / 1024  }} <br>
+Data_Disks: <br>
+Free Space: <br>
+

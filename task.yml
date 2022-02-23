@@ -1,0 +1,21 @@
+- hosts: db-servers
+  become: yes
+  #  roles:
+          #    - nginx
+  tasks:
+    - name: run top
+      shell: "top -bn1 | grep %Cpu"
+      register: top
+#   - name: show cpu usage
+#  debug:
+#        var: top
+#    - debug:
+#            msg: "{% set cpu_idle=top.stdout.split(' id').0.split(',')|last()|float() %}{% set cpu_usage=((100-cpu_idle)|round(3)) %}cpu: {{ cpu_usage }}"
+    - name: set cpu_usage
+      set_fact:
+        cpu_usage: "{{ (100-top.stdout.split(' id').0.split(',')|last()|float())|round(3)  }}"
+    - name: install server report
+      template:
+        src: template.j2
+        dest: /var/www/html/server_report.html
+

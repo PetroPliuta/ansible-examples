@@ -1,0 +1,9 @@
+[webservers]
+srv1 ansible_host=e3aef156871c.mylabserver.com
+srv2 ansible_host=e3aef156872c.mylabserver.com
+
+[db-servers]
+srv3 ansible_host=e3aef156873c.mylabserver.com
+srv4 ansible_host=e3aef156874c.mylabserver.com
+
+
